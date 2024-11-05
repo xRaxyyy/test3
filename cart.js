@@ -90,7 +90,7 @@ function addToCart(event, productName) {
     event.preventDefault();
 
     // Fetch products from the JSON file
-    fetch('https://raw.githubusercontent.com/xRaxyyy/test3/main/products.json')
+    fetch('./products.json')
         .then(response => response.json())
         .then(products => {
             // Assuming you pass the product name as a data attribute on the button
