@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-straight/css/uicons-bold-straight.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
+
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/f6f6445ca5.js" crossorigin="anonymous"></script>
+
+    <script src="app.js" defer></script>
+    <script src="cart.js" defer></script>
+
+    <link rel="stylesheet" href="test.css">
+</head>
+
+<body>
+    <section id="navigation">
+        <div id="nav-content">
+
+            <div id="logo">
+                <img src="img/logo.png" alt="Website Logo">
+            </div>
+
+            <div id="shop-btns">
+                <li><a id="home-link" href="home.html">Home</a></li>
+                <li class="dropdown">
+                    <a id="lidl-link" href="lidl.html">Lidl <i class="fi-sr-angle-small-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="lidl/cakes.html">Cakes</a></li>
+                        <!-- other Lidl links -->
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a id="aldi-link" href="#">Aldi <i class="fi-sr-angle-small-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="aldi/cakes.html">Cakes</a></li>
+                        <!-- other Aldi links -->
+                    </ul>
+                </li>
+            </div>
+
+            <div id="other-btns">
+                <i id="search-link" onclick="toggleSearchOverlay()" class="fi-br-search"></i>
+                <a id="shopping-cart" class="active" href="cart.html">
+                    <i id="cart-link" class="fi-br-shopping-bag"></i>
+                    <h1 id="cart-counter">0</h1>
+                </a>
+                <i id="menu-link" onclick="toggleSidebar()" class="fi-br-menu-burger"></i>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="mobile-sidebar" class="">
+        <div id="sidebar-content" class="">
+            <div id="sidebar-dropdown">
+                <div id="mobile-home-btn">
+                    <a href="#" id="home">Home</a>
+                </div>    
+            </div>
+        
+            <div id="sidebar-dropdown">
+                <div id="mobile-lidl-btn">
+                    <a href="lidl.html" id="menu-item">Lidl</a>
+                    <i onclick="mobileDD(this.parentNode)" class="fi-sr-angle-small-down arrow-icon"></i>
+                </div>
+                <div id="content-dropdown" class="">
+                    <div id="category-btn"><a href="lidl/cakes.html">Cakes</a></div>
+                    <div id="category-btn"><a href="lidl/fonteinen.html">Fonteinen</a></div>
+                    <div id="category-btn"><a href="lidl/vuurpijlen.html">Vuurpijlen</a></div>
+                    <div id="category-btn"><a href="lidl/knalvuurwerk.html">Knalvuurwerk</a></div>
+                    <div id="category-btn"><a href="lidl/pakketten.html">Pakketten</a></div>
+                    <div id="category-btn"><a href="lidl/singleshots.html">Single Shots</a></div>
+                    <div id="category-btn"><a href="lidl/overig.html">Overig</a></div>
+                </div>
+            </div>
+        
+            <div id="sidebar-dropdown">
+                <div id="mobile-aldi-btn">
+                    <a href="#" id="menu-item" class="menu-item">Aldi</a>
+                    <i onclick="mobileDD(this.parentNode)" class="fi-sr-angle-small-down arrow-icon"></i>
+                </div>
+                <div id="content-dropdown" class="">
+                    <div id="category-btn"><a href="#">Cakes</a></div>
+                    <div id="category-btn"><a href="#">Fonteinen</a></div>
+                    <div id="category-btn"><a href="#">Compounds</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="search-overlay">
+        <div id="search-bar">
+            <div id="search-holder">
+                <div id="search-box">
+                    <i class="fi-br-search"></i>
+                    <input id="search-input" type="text" placeholder="Zoekterm invoeren..">
+                    <div id="search-icon">
+                        <i class="fi-br-search"></i>
+                    </div>
+                </div>
+                <div id="suggestions" class="suggestions-list">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="shopping-list">
+        <div id="shopping-page">
+            <div id="shopping-content">
+                <h1>Lijstje</h1>
+                <div class="shops">
+                    <div class="no-products" id="no-products" style="display: none;">
+                        <h1>Je hebt nog geen producten in je winkelwagen.</h1>
+                    </div>                    
+                    <div class="lidl" id="lidl-container">
+                        <h1>Lidl vuurwerk</h1>
+                        <div class="product-container" id="lidl-products">
+                            <!-- Lidl cart items will be dynamically inserted here -->
+                        </div>
+                    </div>
+                    <div class="aldi" id="aldi-container">
+                        <h1>Aldi vuurwerk</h1>
+                        <div class="product-container" id="aldi-products">
+                            <!-- Aldi cart items will be dynamically inserted here -->
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="orderdetails" id="order-details">
+                <h1>Bestelling</h1>
+                <div class="subtotal">
+                    <h1>Subtotaal</h1>
+                    <h2>0.00</h2> <!-- This will be updated -->
+                </div>
+                <div class="sum">
+                    <div class="lidl-price">
+                        <h1>Lidl</h1>
+                        <h2>0.00</h2> <!-- This will be updated -->
+                    </div>
+                    <div class="aldi-price">
+                        <h1>Aldi</h1>
+                        <h2>0.00</h2> <!-- This will be updated -->
+                    </div>
+                </div>
+                <div class="total">
+                    <h1>Totaalbedrag</h1>
+                    <h2>0.00</h2> <!-- This will be updated -->
+                </div>            
+                <div class="let-op">
+                    <h1>* Let op! Dit is puur voor lijstjes doeleinde. Wij verkopen niets.</h1>
+                </div>
+            </div>
+        </div>    
+        </div>
+    </section>
+
+</body>
+
+<script>
+    // Function to handle dropdown toggle
+    function sidebarDD(clickedElement) {
+        const dropdownContent = clickedElement.nextElementSibling;
+        const arrowIcon = clickedElement.querySelector('.arrow-icon');
+
+        dropdownContent.classList.toggle('active');
+        arrowIcon.classList.toggle('active');
+    }
+
+    // Function to open the active dropdown on page load
+    function openActiveDropdowns() {
+        // Check each sidebar box
+        const sidebarBoxes = document.querySelectorAll('#sidebar-box');
+
+        sidebarBoxes.forEach((box) => {
+            const dropdownContent = box.querySelector('#category-dropdown');
+            const categoryButtons = box.querySelectorAll('#category-btn > a');
+
+            // Check if any category link in this box is active
+            const hasActiveCategory = Array.from(categoryButtons).some(link => link.classList.contains('active'));
+
+            if (hasActiveCategory) {
+                dropdownContent.classList.add('active'); // Open dropdown
+                const arrowIcon = box.querySelector('.arrow-icon');
+                arrowIcon.classList.add('active'); // Rotate arrow icon
+            }
+        });
+    }
+
+    // Call the function to open dropdowns on page load
+    document.addEventListener('DOMContentLoaded', openActiveDropdowns);
+</script>
+
+
+
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('mobile-sidebar');
+        const sidebarContent = document.getElementById('sidebar-content');
+        const searchOverlay = document.getElementById('search-overlay');
+
+        // If the search overlay is active, close it
+        if (searchOverlay.classList.contains('visible')) {
+            toggleSearchOverlay(); // Close the search overlay
+        }
+
+        // Toggle the sidebar
+        sidebar.classList.toggle('active');
+        sidebarContent.classList.toggle('active');
+    }
+</script>
+
+<script>
+    function mobileDD(clickedElement) {
+        const dropdownContent = clickedElement.nextElementSibling;
+        const arrowIcon = clickedElement.querySelector('.arrow-icon');
+        const menuItem = clickedElement.querySelector('.menu-item');
+
+        dropdownContent.classList.toggle('active');
+
+        // Toggle rotation by adding/removing active class
+        arrowIcon.classList.toggle('active');
+        menuItem.classList.toggle('active');
+    }
+</script>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", clearSearchInput);
+    window.addEventListener("pageshow", (event) => {
+        // Check if the page was loaded from the cache
+        if (event.persisted) {
+            clearSearchInput();
+        }
+    });
+    
+    function clearSearchInput() {
+        const searchInput = document.getElementById('search-input');
+        // Set the input value to an empty string to clear it
+        searchInput.value = '';
+    }
+    
+    
+    
+    
+        function toggleSearchOverlay() {
+            const overlay = document.getElementById('search-overlay');
+            const searchBar = document.getElementById('search-bar');
+        
+            if (overlay.classList.contains('visible')) {
+                // Hide the overlay and search bar
+                searchBar.classList.remove('visible'); // Trigger slide-out and fade-out
+                overlay.classList.remove('visible'); // Hide the overlay
+        
+                // Wait for the transition to finish before hiding the overlay
+                setTimeout(() => {
+                    overlay.style.visibility = 'hidden'; // Hide the overlay
+                    clearSearchInput();
+                }, 300); // Match this time with your CSS transition duration
+            } else {
+                overlay.style.visibility = 'visible'; // Show the overlay
+                overlay.classList.add('visible'); // Trigger fade-in effect
+                searchBar.classList.add('visible'); // Trigger slide-in effect
+            }
+        }
+        
+        // Add event listener to the overlay to close it on click
+        document.getElementById('search-overlay').addEventListener('click', function(event) {
+            // Check if the overlay is visible
+            if (this.classList.contains('visible')) {
+                toggleSearchOverlay(); // Close the overlay if it's open
+                setTimeout(() => {
+                    clearSearchInput();
+                }, 300);
+            }
+        });
+        
+        // Stop event propagation for all children of the overlay
+        const overlayChildren = document.querySelectorAll('#search-overlay *');
+        overlayChildren.forEach(child => {
+            child.addEventListener('click', function(event) {
+                event.stopPropagation(); // Prevent the overlay from closing
+            });
+        });
+        </script>
+        
+    
+    <script>
+        let searchProducts = [];
+        
+        // Load products from products.json
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('products.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    searchProducts = data; // Load products into the global array
+                })
+                .catch(error => console.error('Error loading products:', error));
+        
+            const searchInput = document.getElementById("search-input");
+            const suggestions = document.getElementById("suggestions");
+            const searchIcon = document.getElementById("search-icon");
+        
+            // Event listener for input to filter suggestions
+            searchInput.addEventListener("input", function () {
+                const query = searchInput.value.toLowerCase();
+                suggestions.innerHTML = ""; // Clear previous suggestions
+        
+                if (query) {
+                    const matchedProducts = searchProducts.filter(product =>
+                        product.name.toLowerCase().includes(query)
+                    ).slice(0, 10); // Limit to first 10 matched products
+        
+                    matchedProducts.forEach((product, index) => {
+                        const suggestionHolder = document.createElement("div");
+                        suggestionHolder.id = `suggestion-holder`; // Unique ID for each suggestion holder
+        
+                        const suggestionItem = document.createElement("div");
+                        suggestionItem.id = `suggestion-item`; // Unique ID for each suggestion item
+        
+                        // Create and append the image
+                        const suggestionImg = document.createElement("img");
+                        suggestionImg.src = product.image; // Assuming product has an 'image' property
+                        suggestionImg.alt = product.name; // Set alt text
+                        suggestionImg.id = `suggestion-img`; // Unique ID for each image
+                        suggestionItem.appendChild(suggestionImg);
+        
+                        // Create and append the name
+                        const suggestionName = document.createElement("h1");
+                        suggestionName.textContent = product.name;
+                        suggestionName.id = `suggestion-name`; // Unique ID for each name
+                        suggestionItem.appendChild(suggestionName);
+        
+                        // Create and append the price
+                        const suggestionPrice = document.createElement("h2");
+                        suggestionPrice.textContent = `${product.price}`; // Assuming product has a 'price' property
+                        suggestionPrice.id = `suggestion-price`; // Unique ID for each price
+                        suggestionItem.appendChild(suggestionPrice);
+        
+                        // Add click event to redirect
+                        suggestionItem.addEventListener("click", () => {
+                            const productNameWithHyphens = product.name.replace(/\s+/g, '-'); // Replace spaces with hyphens
+                            window.location.href = `/template.html?product=${encodeURIComponent(productNameWithHyphens)}`;
+                        });
+        
+                        suggestionHolder.appendChild(suggestionItem);
+                        suggestions.appendChild(suggestionHolder);
+                    });
+        
+                    suggestions.style.display = "block"; // Show suggestions list
+                } else {
+                    suggestions.style.display = "none"; // Hide suggestions if no query
+                }
+            });
+        
+            // Hide suggestions when clicking outside the input
+            document.addEventListener("click", (event) => {
+                if (!event.target.closest("#search-box")) {
+                    suggestions.style.display = "none";
+                }
+            });
+        
+            // Redirect to search results page on clicking search icon
+            searchIcon.addEventListener("click", () => {
+                const query = searchInput.value;
+                if (query) {
+                    window.location.href = `/template.html?query=${encodeURIComponent(query)}`;
+                }
+            });
+        });
+    </script>
+
+
+<script>
+
+    window.onload = function() {
+    
+        sessionStorage.setItem('lastVisitedPage', window.location.href);
+        
+        const profileDropdown = document.getElementById('profile-dropdown');
+    
+        if (profileDropdown) {
+            const loggedIn = sessionStorage.getItem('loggedIn') === 'true' || localStorage.getItem('loggedIn') === 'true'
+            
+            if (loggedIn) {
+                const click = sessionStorage.getItem('click') === 'true' || localStorage.getItem('click') === 'true'
+                const accountLink = document.getElementById('account-link');
+                document.getElementById('account-link').href = 'javascript:void(0)'
+    
+                if (click) {
+                    profileDropdown.classList.add('click');
+    
+                    const username = localStorage.getItem('username');
+                    if (username) {
+                        document.getElementById('profile-username').innerText = username;
+                    }
+                }
+    
+                else {
+                    profileDropdown.classList.add('logged-in');
+                    
+                    // Restore the username from localStorage
+                    const username = localStorage.getItem('username');
+                    if (username) {
+                        document.getElementById('profile-username').innerText = username;
+                    }
+                }
+            }
+    
+            else {
+                
+                profileDropdown.classList.remove('click');
+                profileDropdown.classList.remove('logged-in');
+                document.getElementById('account-link').href = 'account.html'
+            }
+    
+        }
+    };
+    
+    
+    document.addEventListener('click', function(event) {
+        const profileDropdown = document.getElementById('profile-dropdown');
+    
+        // Check if the clicked target is not the profile content or its children
+        if (profileDropdown.classList.contains('click') && !profileDropdown.contains(event.target)) {
+            profileDropdown.classList.remove('click');
+            profileDropdown.classList.add('logged-in');
+    
+            sessionStorage.setItem('click', 'false');
+            localStorage.setItem('click', 'false');
+        }
+    });
+        </script>
+
+
+</html>

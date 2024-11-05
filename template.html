@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title"></title>
+
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-straight/css/uicons-bold-straight.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
+
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/f6f6445ca5.js" crossorigin="anonymous"></script>
+
+    <script src="app.js" defer></script>
+    <script src="cart.js" defer></script>
+
+    <link rel="stylesheet" href="test.css">
+</head>
+
+<body>
+    <section id="navigation">
+        <div id="nav-content">
+
+            <div id="logo">
+                <img src="img/logo.png" alt="Website Logo">
+            </div>
+
+            <div id="shop-btns">
+                <li><a id="home-link" href="home.html">Home</a></li>
+                <li class="dropdown">
+                    <a id="lidl-link" class="active" href="lidl.html">Lidl <i class="fi-sr-angle-small-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="lidl/cakes.html">Cakes</a></li>
+                        <!-- other Lidl links -->
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a id="aldi-link" href="#">Aldi <i class="fi-sr-angle-small-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="aldi/cakes.html">Cakes</a></li>
+                        <!-- other Aldi links -->
+                    </ul>
+                </li>
+            </div>
+
+            <div id="other-btns">
+                <i id="search-link" onclick="toggleSearchOverlay()" class="fi-br-search"></i>
+                <a id="shopping-cart" href="cart.html">
+                    <i id="cart-link" class="fi-br-shopping-bag"></i>
+                    <h1 id="cart-counter">0</h1>
+                </a>
+                <i id="menu-link" onclick="toggleSidebar()" class="fi-br-menu-burger"></i>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="mobile-sidebar" class="">
+        <div id="sidebar-content" class="">
+            <div id="sidebar-dropdown">
+                <div id="mobile-home-btn">
+                    <a href="#" id="home">Home</a>
+                </div>    
+            </div>
+        
+            <div id="sidebar-dropdown">
+                <div id="mobile-lidl-btn">
+                    <a href="lidl.html" id="menu-item">Lidl</a>
+                    <i onclick="mobileDD(this.parentNode)" class="fi-sr-angle-small-down arrow-icon"></i>
+                </div>
+                <div id="content-dropdown" class="">
+                    <div id="category-btn"><a href="lidl/cakes.html">Cakes</a></div>
+                    <div id="category-btn"><a href="lidl/fonteinen.html">Fonteinen</a></div>
+                    <div id="category-btn"><a href="lidl/vuurpijlen.html">Vuurpijlen</a></div>
+                    <div id="category-btn"><a href="lidl/knalvuurwerk.html">Knalvuurwerk</a></div>
+                    <div id="category-btn"><a href="lidl/pakketten.html">Pakketten</a></div>
+                    <div id="category-btn"><a href="lidl/singleshots.html">Single Shots</a></div>
+                    <div id="category-btn"><a href="lidl/overig.html">Overig</a></div>
+                </div>
+            </div>
+        
+            <div id="sidebar-dropdown">
+                <div id="mobile-aldi-btn">
+                    <a href="#" id="menu-item" class="menu-item">Aldi</a>
+                    <i onclick="mobileDD(this.parentNode)" class="fi-sr-angle-small-down arrow-icon"></i>
+                </div>
+                <div id="content-dropdown" class="">
+                    <div id="category-btn"><a href="#">Cakes</a></div>
+                    <div id="category-btn"><a href="#">Fonteinen</a></div>
+                    <div id="category-btn"><a href="#">Compounds</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+
+    <section id="search-overlay">
+        <div id="search-bar">
+            <div id="search-holder">
+                <div id="search-box">
+                    <i class="fi-br-search"></i>
+                    <input id="search-input" type="text" placeholder="Zoekterm invoeren..">
+                    <div id="search-icon">
+                        <i class="fi-br-search"></i>
+                    </div>
+                </div>
+                <div id="suggestions" class="suggestions-list">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prodetails" class="section-p1">
+        <div class="filler">
+            <a id="prev" href="lidl.html">
+                <i class="fi-br-angle-left"></i> Terug
+            </a>
+            <span class="home" id="grey"><a href="home.html">Home</a></span>
+            <span class="slash"> / </span>
+            <span class="lidl" id="grey"><a id="hierarchy-shop" href=""></a></span>
+            <span class="slash"> / </span>
+            <span class="cakes" id="grey"><a id="hierarchy-catagory" href=""></a></span>
+            <span class="slash"> / </span>
+            <span class="name" id="hierarchy-name"></span>
+        </div>
+
+        <div id="product-container">
+            <div id="img-selection">
+                <div id="img-controls">
+                    <div id="img-icons">
+                        <i id="prev-img" class="fi-br-angle-left"></i>
+                        <i id="next-img" class="fi-br-angle-right"></i>
+                        <i id="zoom-img" class="fi-br-zoom-in"></i>
+                    </div>
+                    <div id="product-img">
+                        <img id="product-image" src="" alt="Product Image">
+                    </div>
+                </div>
+                <div id="small-image-col">
+                    <div id="small-product-img" class="small-img-box">
+                        <img id="product-image" src="" class="selected" alt="Product Image">
+                    </div>
+                    <div id="small-video-box"" class="small-img-box video-box">
+                        <img id="play-button" src="img/play-button.png" alt="Play Button">
+                        <img id="thumbnail" src="" alt="Thumbnail">
+                    </div>
+                </div>
+            </div>
+            <div id="single-pro-details">
+                <div id="name-local">
+                    <h1 id="product-name"></h1>
+                    <div id="exclamation" class="">
+                        <i class="fi-rr-exclamation" id="exclamation-icon"></i>
+                        <span id="exclamation-text">Let op! Alleen lokaal beschikbaar</span>
+                    </div>
+                </div>                
+                <h2 id="product-category"></h2>
+                <h4 id="product-price"></h4>
+                <h5 id="amount">Aantal</h1>
+                <div id="cart">
+                    <div id="quantity-control">
+                        <button id="minus-btn"><i class="fi-rr-minus"></i></button>
+                        <input id="cart-input" type="number" value="1" min="1">
+                        <button id="plus-btn"><i class="fi-rr-plus"></i></button>
+                    </div>
+                    <button id="add-cart" onclick="">Voeg toe aan lijstje</button>
+                </div>
+                <div id="single-pro-tabel">
+                    <div id="specifications-text">
+                        <h1 id="specifications">Specificaties</h1>
+                        <div id="line"></div>
+                    </div>
+                    <div id="tabel1">
+                        <h1>Kruit totaal (gram)</h1>
+                        <h2 id="product-kruid">1000 gram</h2>
+                    </div>
+                    <div id="tabel2">
+                        <h1>Importeur</h1>
+                        <h2 id="product-importeur">Funke</h2>
+                    </div>
+                    <div id="tabel1">
+                        <h1>Aantal delen</h1>
+                        <h2 id="product-parts"></h2>
+                    </div>
+                    <div id="tabel2">
+                        <h1>Schoten</h1>
+                        <h2 id="product-shots"></h2>
+                    </div>
+                    <div id="tabel1">
+                        <h1>Kaliber</h1>
+                        <h2 id="product-caliber"></h2>
+                    </div>
+                    <div id="tabel2">
+                        <h1>Brandduur</h1>
+                        <h2 id="product-burnTime"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", clearSearchInput);
+        window.addEventListener("pageshow", (event) => {
+            // Check if the page was loaded from the cache
+            if (event.persisted) {
+                clearSearchInput();
+            }
+        });
+        
+        function clearSearchInput() {
+            const searchInput = document.getElementById('search-input');
+            // Set the input value to an empty string to clear it
+            searchInput.value = '';
+        }
+        
+        
+        
+        
+            function toggleSearchOverlay() {
+                const overlay = document.getElementById('search-overlay');
+                const searchBar = document.getElementById('search-bar');
+            
+                if (overlay.classList.contains('visible')) {
+                    // Hide the overlay and search bar
+                    searchBar.classList.remove('visible'); // Trigger slide-out and fade-out
+                    overlay.classList.remove('visible'); // Hide the overlay
+            
+                    // Wait for the transition to finish before hiding the overlay
+                    setTimeout(() => {
+                        overlay.style.visibility = 'hidden'; // Hide the overlay
+                        clearSearchInput();
+                    }, 300); // Match this time with your CSS transition duration
+                } else {
+                    overlay.style.visibility = 'visible'; // Show the overlay
+                    overlay.classList.add('visible'); // Trigger fade-in effect
+                    searchBar.classList.add('visible'); // Trigger slide-in effect
+                }
+            }
+            
+            // Add event listener to the overlay to close it on click
+            document.getElementById('search-overlay').addEventListener('click', function(event) {
+                // Check if the overlay is visible
+                if (this.classList.contains('visible')) {
+                    toggleSearchOverlay(); // Close the overlay if it's open
+                    setTimeout(() => {
+                        clearSearchInput();
+                    }, 300);
+                }
+            });
+            
+            // Stop event propagation for all children of the overlay
+            const overlayChildren = document.querySelectorAll('#search-overlay *');
+            overlayChildren.forEach(child => {
+                child.addEventListener('click', function(event) {
+                    event.stopPropagation(); // Prevent the overlay from closing
+                });
+            });
+            </script>
+            
+        
+        <script>
+            let searchProducts = [];
+            
+            // Load products from products.json
+            document.addEventListener("DOMContentLoaded", function () {
+                fetch('products.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        searchProducts = data; // Load products into the global array
+                    })
+                    .catch(error => console.error('Error loading products:', error));
+            
+                const searchInput = document.getElementById("search-input");
+                const suggestions = document.getElementById("suggestions");
+                const searchIcon = document.getElementById("search-icon");
+            
+                // Event listener for input to filter suggestions
+                searchInput.addEventListener("input", function () {
+                    const query = searchInput.value.toLowerCase();
+                    suggestions.innerHTML = ""; // Clear previous suggestions
+            
+                    if (query) {
+                        const matchedProducts = searchProducts.filter(product =>
+                            product.name.toLowerCase().includes(query)
+                        ).slice(0, 10); // Limit to first 10 matched products
+            
+                        matchedProducts.forEach((product, index) => {
+                            const suggestionHolder = document.createElement("div");
+                            suggestionHolder.id = `suggestion-holder`; // Unique ID for each suggestion holder
+            
+                            const suggestionItem = document.createElement("div");
+                            suggestionItem.id = `suggestion-item`; // Unique ID for each suggestion item
+            
+                            // Create and append the image
+                            const suggestionImg = document.createElement("img");
+                            suggestionImg.src = product.image; // Assuming product has an 'image' property
+                            suggestionImg.alt = product.name; // Set alt text
+                            suggestionImg.id = `suggestion-img`; // Unique ID for each image
+                            suggestionItem.appendChild(suggestionImg);
+            
+                            // Create and append the name
+                            const suggestionName = document.createElement("h1");
+                            suggestionName.textContent = product.name;
+                            suggestionName.id = `suggestion-name`; // Unique ID for each name
+                            suggestionItem.appendChild(suggestionName);
+            
+                            // Create and append the price
+                            const suggestionPrice = document.createElement("h2");
+                            suggestionPrice.textContent = `${product.price}`; // Assuming product has a 'price' property
+                            suggestionPrice.id = `suggestion-price`; // Unique ID for each price
+                            suggestionItem.appendChild(suggestionPrice);
+            
+                            // Add click event to redirect
+                            suggestionItem.addEventListener("click", () => {
+                                const productNameWithHyphens = product.name.replace(/\s+/g, '-'); // Replace spaces with hyphens
+                                window.location.href = `/template.html?product=${encodeURIComponent(productNameWithHyphens)}`;
+                            });
+            
+                            suggestionHolder.appendChild(suggestionItem);
+                            suggestions.appendChild(suggestionHolder);
+                        });
+            
+                        suggestions.style.display = "block"; // Show suggestions list
+                    } else {
+                        suggestions.style.display = "none"; // Hide suggestions if no query
+                    }
+                });
+            
+                // Hide suggestions when clicking outside the input
+                document.addEventListener("click", (event) => {
+                    if (!event.target.closest("#search-box")) {
+                        suggestions.style.display = "none";
+                    }
+                });
+            
+                // Redirect to search results page on clicking search icon
+                searchIcon.addEventListener("click", () => {
+                    const query = searchInput.value;
+                    if (query) {
+                        window.location.href = `/template.html?query=${encodeURIComponent(query)}`;
+                    }
+                });
+            });
+        </script>
+
+    <script>
+
+// Function to fetch and display product data
+async function loadProductData() {
+    // Get the product name from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productLink = urlParams.get('product');
+
+    const productName = productLink.replace(/-/g, ' ');
+
+    // Fetch the products.json file
+    const response = await fetch('products.json');
+    
+    if (!response.ok) {
+        throw new Error(`Error fetching the product data: ${response.statusText}`);
+    }
+    
+    const products = await response.json();
+    
+    // Find the product in the data
+    const product = products.find(p => p.name === productName);
+    
+
+
+    // If product exists, update the HTML content
+    if (product) {
+        document.getElementById('add-cart').onclick = function(event) {addToCart(event, product.name);};
+
+        document.getElementById('title').textContent = product.name + " - Discounter Feuerwerk";
+
+        document.getElementById('exclamation').classList = `${product.local}`;
+        document.getElementById('prev').href = `${product.shophtml}#${product.category}`;
+
+        document.getElementById('hierarchy-shop').href = product.shophtml;
+        document.getElementById('hierarchy-shop').textContent = product.shop;
+
+        document.getElementById('hierarchy-catagory').href = `${product.shophtml}/${product.category}.html`;
+        document.getElementById('hierarchy-catagory').textContent = product.category;
+
+        document.getElementById('hierarchy-name').textContent = product.name;
+        document.getElementById('product-name').textContent = product.name;
+        document.getElementById('product-category').textContent = product.category + " | " + product.type;
+        document.getElementById('product-price').textContent = product.price;
+
+        document.getElementById('product-kruid').textContent = product.kruid;
+        document.getElementById('product-importeur').textContent = product.importeur;
+        document.getElementById('product-parts').textContent = product.delen;
+        document.getElementById('product-shots').textContent = product.schoten;
+        document.getElementById('product-caliber').textContent = product.kaliber;
+        document.getElementById('product-burnTime').textContent = product.brandduur;
+
+        // Update the image sources
+        document.getElementById('thumbnail').src = `https://img.youtube.com/vi/${product.videoId}/hqdefault.jpg`;
+        document.getElementById('product-image').src = product.image;
+    }
+}
+
+const smallImgBoxes = document.querySelectorAll('.small-img-box');
+const mediaContainer = document.querySelector('#product-img');
+const zoomImgButton = document.querySelector('#zoom-img');
+const zoomOverlay = document.querySelector('#zoom-overlay'); // Ensure you have a zoom overlay element
+let isVideoPlaying = false;
+let currentIndex = 0; // Track the current index of the small image box
+let productData = []; // To store fetched product data
+
+// Function to fetch product data
+async function fetchProductData() {
+    try {
+        const response = await fetch('products.json');
+        if (!response.ok) {
+            throw new Error('Error fetching the product data: ' + response.statusText);
+        }
+        productData = await response.json();
+        return productData;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function updateMedia(index) {
+    const selectedBox = smallImgBoxes[index];
+    const urlParams = new URLSearchParams(window.location.search);
+    const productName = urlParams.get('product');
+
+    // Find the product in the data
+    const product = productData.find(p => p.name === productName);
+
+    // Update selected class
+    smallImgBoxes.forEach(b => {
+        b.classList.remove('selected');
+        b.classList.remove('disabled'); // Enable all thumbnails
+    });
+    selectedBox.classList.add('selected');
+
+    if (product.videoId && selectedBox.classList.contains('video-box')) {
+        // Switch to video
+        mediaContainer.innerHTML = ''
+
+        let iframe = mediaContainer.querySelector('iframe');
+        if (!iframe) {
+            iframe = document.createElement('iframe');
+            iframe.width = "100%";
+            iframe.height = "100%";
+            iframe.frameBorder = "0";
+            iframe.allow = "autoplay; encrypted-media";
+            iframe.allowFullscreen = true;
+            mediaContainer.appendChild(iframe);
+        }
+        iframe.src = `https://www.youtube.com/embed/${product.videoId}?controls=1&modestbranding=1&rel=0&autoplay=1`;
+        mediaContainer.classList.add('iframe-active');
+        isVideoPlaying = true;
+
+        // Hide zoom button and set arrows to white
+        zoomImgButton.style.display = 'none';
+        document.querySelector('#prev-img').classList.add('active');
+        document.querySelector('#next-img').classList.add('active');
+        selectedBox.classList.add('disabled');
+    } else {
+        // Switch to image
+        mediaContainer.innerHTML = `<img src="${product.image}" alt="${product.name}">`;
+        mediaContainer.classList.remove('iframe-active');
+        isVideoPlaying = false;
+
+        // Show zoom button and reset arrow color
+        zoomImgButton.style.display = 'block';
+        document.querySelector('#prev-img').classList.remove('active');
+        document.querySelector('#next-img').classList.remove('active');
+    }
+}
+
+
+
+// Prevent click events on the video thumbnail when it is disabled
+smallImgBoxes.forEach((box, index) => {
+    box.addEventListener('click', (event) => {
+        // Check if the box is disabled and is the video box
+        if (box.classList.contains('disabled')) {
+            event.stopPropagation(); // Prevent clicks on the disabled box
+        } else {
+            updateMedia(index);
+        }
+    });
+});
+
+
+
+// Fetch external JSON data and set up event listeners
+fetchProductData().then(() => {
+    // Set the first small image box as selected on startup
+    smallImgBoxes[0].classList.add('selected');
+    updateMedia(0); // Load the first media item by default
+
+    // Click event for small image boxes
+    smallImgBoxes.forEach((box, index) => {
+        box.addEventListener('click', () => {
+            currentIndex = index; // Update current index
+            updateMedia(currentIndex);
+        });
+    });
+
+    // Event listeners for arrows
+    document.querySelector('#prev-img').addEventListener('click', () => {
+        currentIndex = (currentIndex === 0) ? smallImgBoxes.length - 1 : currentIndex - 1;
+        updateMedia(currentIndex);
+    });
+
+    document.querySelector('#next-img').addEventListener('click', () => {
+        currentIndex = (currentIndex === smallImgBoxes.length - 1) ? 0 : currentIndex + 1;
+        updateMedia(currentIndex);
+    });
+}).catch(error => console.error('Error fetching product data:', error));
+
+// Zoom functionality
+zoomImgButton.addEventListener('click', () => {
+    const selectedImg = smallImgBoxes[currentIndex].querySelector('img');
+    const zoomOverlay = document.createElement('div');
+    zoomOverlay.id = 'zoom-overlay';
+    zoomOverlay.innerHTML = `<img src="${selectedImg.src}" alt="Zoomed Image">`;
+    zoomOverlay.style.display = 'flex'; // Show the overlay
+    document.body.appendChild(zoomOverlay);
+    
+    zoomOverlay.addEventListener('click', () => {
+        document.body.removeChild(zoomOverlay); // Close zoom on click
+    });
+});
+
+// Call the loadProductData function when the page loads
+window.onload = () => {
+    loadProductData();
+    fetchProductData();
+};
+
+
+
+
+    </script>
+</body>
+
+</html>
